@@ -15,7 +15,7 @@ pipeline {
           count++
           sh './test-script.sh'
           echo "retry of : ${count}/5"
-          currentBuild.description = "Retry Attempt: ${count}"
+          currentBuild.description = "Retry Attempt: ${count} of 5"
         }
       }
       }
