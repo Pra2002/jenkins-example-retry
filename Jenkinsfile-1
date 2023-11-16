@@ -8,9 +8,15 @@ pipeline {
     }
     stage('stage 2') {
       steps {
-        retry(5) {
+        script{
+        def count =0
+        def attempt=5
+        retry(attempt) {
+          count++
           sh './test-script.sh'
+          echo "retry of : ${count}/${attempt}"
         }
+      }
       }
     }
     stage('stage 3') {
