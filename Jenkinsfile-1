@@ -10,11 +10,12 @@ pipeline {
       steps {
         script{
         def count =0
-        def attempt=5
-        retry(attempt) {
+       // def attempt=5
+        retry(5) {
           count++
           sh './test-script.sh'
-          echo "retry of : ${count}/${attempt}"
+          echo "retry of : ${count}/5"
+          currentBuild.description = "Retry Attempt: ${count}"
         }
       }
       }
